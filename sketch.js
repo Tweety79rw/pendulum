@@ -15,7 +15,7 @@ function setup() {
   let lenCalc = lengthCalc(solveK(height - 50));
   for(let i = 300; i > 0; i--) {
     let len = lenCalc(i);
-    console.log(len);
+    //console.log(len);
     pend.push(new Pendulum(width/2, 10, PI/3, len));
   }
 }
