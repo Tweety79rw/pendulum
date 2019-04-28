@@ -18,7 +18,7 @@ class Pendulum {
     this.showLine = !this.showLine;
   }
   update() {
-    this.angleAcc = (-0.8 / this.armLength) * sin(this.theta);
+    this.angleAcc = (-g / this.armLength) * sin(this.theta);
     this.angleVel += this.angleAcc;
     this.theta += this.angleVel;
 
@@ -26,12 +26,12 @@ class Pendulum {
   }
   render() {
     noFill();
-    stroke(255);
+    stroke(255, 120);
     let bob = this.toCartCoord(this.theta, this.armLength, this.origin);
 
     if(this.showLine)
       line(this.origin.x, this.origin.y, bob.x, bob.y);
-    fill(255);
+    fill(255, 120);
     circle(bob.x, bob.y, this.bobSize);
   }
 }
