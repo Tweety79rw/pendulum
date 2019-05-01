@@ -1,18 +1,18 @@
 class Pendulum {
-  constructor(originX, originY, startAngle, armLength) {
+  constructor(originX, originY, startAngle, armLength, color, tone) {
     this.origin = createVector(originX, originY);
     this.theta = startAngle;
     this.armLength = armLength;
+    this.color = color;
+    this.tone = tone;
     this.bobSize = 10;
     this.angleAcc = 0;
     this.angleVel = 0;
     this.showLine = true;
   }
   toCartCoord(theta, arm, origin) {
-    return {
-      x: arm * sin(theta) + origin.x,
-      y: arm * cos(theta) + origin.y
-    };
+    return createVector(arm * sin(theta) + origin.x,
+      arm * cos(theta) + origin.y);
   }
   toggleShowLine() {
     this.showLine = !this.showLine;
@@ -26,12 +26,13 @@ class Pendulum {
   }
   render() {
     noFill();
-    stroke(255, 120);
+    stroke(255, 140);
     let bob = this.toCartCoord(this.theta, this.armLength, this.origin);
 
     if(this.showLine)
       line(this.origin.x, this.origin.y, bob.x, bob.y);
-    fill(255, 120);
+    noStroke();
+    fill(this.color);
     circle(bob.x, bob.y, this.bobSize);
   }
 }
