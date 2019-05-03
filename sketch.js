@@ -1,6 +1,7 @@
 let pend = [];
 let polySynth;
 const notes = ['C2', 'C3', 'C4', 'C5', 'G3', 'G4', 'G5', 'F3','F4','F5','E3','E4','E5','A3','A4','A5'];
+const colors = [color(255,0,0,140), color(0,255,0,140), color(0, 0, 255, 140)];
 const tMax = 24000;
 const g = 0.8;
 function lengthCalc(k) {
@@ -19,7 +20,7 @@ function setup() {
   for(let i = 300; i > 0; i--) {
     let len = lenCalc(i);
     //console.log(len);
-    pend.push(new Pendulum(width/2, 10, PI/3, len, i%2===0?color(255,0,0,140):color(0,255,0,140), i*10 + 160));
+    pend.push(new Pendulum(width/2, 10, PI/3, len, colors[i%3], i*10 + 160));
   }
 
 }
