@@ -10,6 +10,9 @@ class Pendulum {
     this.angleVel = 0;
     this.showLine = true;
   }
+  setColor(color) {
+    this.color = color;
+  }
   toCartCoord(theta, arm, origin) {
     return createVector(arm * sin(theta) + origin.x,
       arm * cos(theta) + origin.y);
@@ -22,7 +25,7 @@ class Pendulum {
     this.angleVel += this.angleAcc;
     this.theta += this.angleVel;
 
-    this.angleVel *= 0.9999;
+    this.angleVel *= damp;
   }
   render() {
     noFill();
